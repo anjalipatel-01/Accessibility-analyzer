@@ -4,12 +4,16 @@ import { Copyright,CircleUserRound,Linkedin,Github, Twitter,Bot,BadgeAlert,BookO
 
 export default function Homepage(){
     return(
-        <div>
+        <div className='home-page'>
             <nav className="navbar">
-                <div>
-                    <input type="text" placeholder="Search" aria-label="Search"  />
-                    <button id="login">Login</button>
+                <div className="search-auth-wrapper">
+                    <input type="text" placeholder="Search" aria-label="Search" />
+                        <div className="auth-buttons">
+                            <button id="register">Register</button>
+                            <button id="login">Login</button>
+                        </div>
                 </div>
+
                 <div className="services">
                     <a href="#">Services</a>
                     <a href="#">Solutions</a>
@@ -26,10 +30,12 @@ export default function Homepage(){
             </header>
             <br></br>
             <main> 
-                <button>Test Your Site</button>
+                <div className="center-button">
+                    <button>Test Your Site</button>
+                </div>
             </main>
              <section className="Usage">
-                <div className="card" style={{ width: '18rem' }}>
+                <div className="card" style={{ width: '18rem',backgroundColor: '#EFD5F2'  }}>
                     <div className="card-body" style={{ textAlign: 'center' }}>
                          <div style={{ fontSize: '48px', marginBottom: '1rem' }}>
                              <Bot />
@@ -42,7 +48,7 @@ export default function Homepage(){
                 </div>
 
 
-                <div className="card" style={{ width: '18rem' }}>
+                <div className="card" style={{ width: '18rem',backgroundColor: '#EFD5F2' }}>
                     <div className="card-body" style={{ textAlign: 'center' }}>
                          <div style={{ fontSize: '48px', marginBottom: '1rem' }}>
                             <BadgeAlert size={24}/>
@@ -55,7 +61,7 @@ export default function Homepage(){
                 </div>
 
 
-                <div className="card" style={{ width: '18rem' }}>
+                <div className="card" style={{ width: '18rem',backgroundColor: '#EFD5F2'  }}>
                     <div className="card-body" style={{ textAlign: 'center' }}>
                         <div style={{ fontSize: '48px', marginBottom: '1rem' }}>
                             <BookOpenCheck />

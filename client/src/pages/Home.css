@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
-
+.home-page{
+  background-color: white;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -25,8 +27,18 @@
   border-radius: 4px;
   margin-right: 0.5rem;
 }
+#login{ padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 0.5rem;
+}
 
-#login {
+#register{
   padding: 0.5rem 1rem;
   background-color: #01d28e;
   border: none;
@@ -37,8 +49,24 @@
   transition: background-color 0.3s ease;
 }
 
-#login:hover {
+#login:hover,#register:hover {
   background-color: #00b87c;
+}
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.search-auth-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* spacing between input and buttons */
+}
+
+.search-auth-wrapper input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 .services a {
@@ -81,7 +109,9 @@
   font-weight: bold;
   cursor: pointer;
 }
-
+.herobutton-wrapper {
+  background-color: transparent; /* or match with your hero section */
+}
 /* Button styled like login button with hover effect */
 main button {
   background-color: #01d28e;
@@ -93,10 +123,18 @@ main button {
   color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
 }
 
 main button:hover {
   background-color: #00b87c;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .Usage {
@@ -108,7 +146,7 @@ main button:hover {
 }
 
 .card {
-  background-color: white;
+  background-color: #EFD5F2;
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
