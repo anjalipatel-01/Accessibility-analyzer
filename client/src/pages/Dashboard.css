@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.dashboard-container {
+  background-color: white;
+  color: #002b36;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #012E40;
+  padding: 1rem 2rem;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-wrap: wrap;
+}
+
+.search-auth-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-auth-wrapper input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.auth-buttons button,
+#logout {
+  padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-buttons button:hover,
+#logout:hover {
+  background-color: #00b87c;
+}
+
+.services {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.services a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.services a:hover {
+  text-decoration: underline;
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #01d28e;
+  margin-bottom: 1rem;
+}
+
+.Herosection {
+  text-align: center;
+  background-color: #014C54;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.heroh4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+main button {
+  background-color: #01d28e;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+main button:hover {
+  background-color: #00b87c;
+}
+
+.Usage {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #D6F4E4;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+  padding: 1.5rem;
+  width: 300px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #014C54;
+}
+
+.card-text {
+  color: #4b4b4b;
+  line-height: 1.6;
+}
+
+.who-is-section {
+  background-color: #F2F9F7;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin: 2rem;
+}
+
+.who-is-section h3 {
+  font-size: 1.75rem;
+  color: #002b36;
+  margin-bottom: 1rem;
+}
+
+.who-is-section h4 {
+  color: #46733F;
+  margin-top: 1rem;
+}
+
+.who-is-section p {
+  margin-bottom: 0.75rem;
+}
+.who-is-section h3 {
+  font-size: 1.75rem;
+  color: #002b36; /* Dark color for visibility */
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+
+footer {
+  background-color: #002b36;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
