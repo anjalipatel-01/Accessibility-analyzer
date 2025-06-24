@@ -14,7 +14,6 @@
   z-index: 50;
 }
 
-/* Updated Access Guard font style */
 .brand-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
@@ -22,11 +21,6 @@
   color: #01d28e;
 }
 
-.navbar input {
-  padding: 0.5rem;
-  border-radius: 4px;
-  margin-right: 0.5rem;
-}
 #login{ padding: 0.5rem 1rem;
   background-color: #01d28e;
   border: none;
@@ -60,13 +54,40 @@
 .search-auth-wrapper {
   display: flex;
   align-items: center;
-  gap: 1rem; /* spacing between input and buttons */
+  gap: 1.5rem; 
 }
 
-.search-auth-wrapper input {
-  padding: 0.5rem;
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.search-container input {
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
   border-radius: 4px;
+  border: none;
   font-size: 1rem;
+  width: 200px;
+}
+
+.search-button {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+}
+search-button:hover {
+  color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto;
 }
 
 .services a {
@@ -79,7 +100,8 @@
     color: white;
     text-decoration: underline;
 }
-.Herosection {
+/*hero section*/
+.hero-section {
   text-align: center;
   background-color: #00364a;
   color: white;
@@ -110,9 +132,9 @@
   cursor: pointer;
 }
 .herobutton-wrapper {
-  background-color: transparent; /* or match with your hero section */
+  background-color: transparent;
 }
-/* Button styled like login button with hover effect */
+/* Button */
 main button {
   background-color: #01d28e;
   border: none;
@@ -136,7 +158,7 @@ main button:hover {
   align-items: center;
   margin-top: 2rem;
 }
-
+/* usage section and cards*/
 .Usage {
   display: flex;
   justify-content: center;
@@ -167,7 +189,7 @@ main button:hover {
 .card-text {
   color: #4b4b4b;
 }
-
+/*footer*/
 footer {
   background-color: #002b36;
   color: white;

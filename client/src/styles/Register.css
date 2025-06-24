@@ -1,8 +1,25 @@
 
-body{
+html,body{
   background-color: #EFD5F2; 
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.auth-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 form {
   display: flex;
@@ -45,4 +62,20 @@ form {
 
 .submit-button:hover {
   background-color: #c278e6;
+}
+form span {
+  color: white; 
+  font-size: 0.7rem;
+}
+
+form span a {
+  color: #D591F2; 
+  text-decoration: underline;
+}
+footer {
+  background-color: #012E40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
 }

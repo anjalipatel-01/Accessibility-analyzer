@@ -1,19 +1,33 @@
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import React from 'react';
-import Homepage from './pages/Home.jsx';
+import Home from './pages/Home.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login.jsx';
  import Register from './pages/Register.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 
-
+const appRouter = createBrowserRouter([
+  {
+    path:'/',
+    element: <Home/>
+  },
+  {
+    path:'/login',
+    element: <Login/>
+  },
+  {
+    path:'/register',
+    element: <Register/>
+  },
+  {
+    path:'/dashboard',
+    element: <Dashboard/>
+  }
+  ])
 export default function App() {
   return (
-    // <Routes>
-    //   <Route path="/" element={<Homepage />} />
-    //   <Route path="/login" element={<Login />} />
-    //   <Route path="/register" element={<Register />} />
-    //   <Route path="/dashboard" element={<Dashboard />} />
-    // </Routes>
-    <Dashboard/>
+    <>
+    <RouterProvider router={appRouter}/>
+    </>  
   );
 }

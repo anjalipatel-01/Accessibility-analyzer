@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const reportschema = new Schema({
     summary:String,
@@ -6,4 +6,5 @@ const reportschema = new Schema({
     score:Number,
     timestamp: Date, 
 });
-module.exports = mongoose.model("Report",reportschema);
+
+export default mongoose.model("Report", reportschema);

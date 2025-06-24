@@ -1,8 +1,24 @@
-body{
+html,body{
   background-color: #EFD5F2; 
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  height: 100%;
 }
+#root {
+  height: 100%;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.auth-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -43,4 +59,10 @@ form {
 
 .submit-button:hover {
   background-color: #c278e6;
+}
+footer {
+  background-color: #ddd;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
 }
