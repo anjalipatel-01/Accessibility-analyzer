@@ -21,27 +21,6 @@
   color: #01d28e;
 }
 
-#login{ padding: 0.5rem 1rem;
-  background-color: #01d28e;
-  border: none;
-  border-radius: 4px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-left: 0.5rem;
-}
-
-#register{
-  padding: 0.5rem 1rem;
-  background-color: #01d28e;
-  border: none;
-  border-radius: 4px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
 #login:hover,#register:hover {
   background-color: #00b87c;
@@ -89,6 +68,55 @@ search-button:hover {
   align-items: center;
   margin-left: auto;
 }
+
+#logout {
+  padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#login {
+  padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+#signup {
+  padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+#dashboard-btn{
+  padding: 0.5rem 1rem;
+  background-color: #01d28e;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+.auth-buttons button:hover,
+#logout:hover {
+  background-color: #00b87c;
+}
+
 
 .services a {
   margin-left: 1.5rem;

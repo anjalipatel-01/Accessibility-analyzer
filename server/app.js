@@ -1,12 +1,13 @@
-import 'dotenv/config';
+import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
 import express from "express";
 import ejs from "ejs";
 import mongoose from "mongoose";
 import cors from "cors";
-import cookieparser from "cookie-parser";
+import cookieParser from "cookie-parser";
+import authRoutes from "./routes/authroutes.js";
 
 const app = express();
-const router = express.Router();
 const MONGO_URL = "mongodb://127.0.0.1:27017/test";
 
 // Connection to MongoDB
@@ -24,20 +25,20 @@ async function main() {
 main();
 
 // MIDDLEWARE BEFORE routes
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-const corsOptions = {
-    origin:'https://localhost:5173',
-    credentials:true,
-}
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true,              
+}));
 
 // ROUTES
 app.get("/", (req, res) => {
     res.send("Hi I am root");
 });
-import authRoutes from "./routes/authroutes.js";
-app.use("/", authRoutes);
+
+app.use("/api", authRoutes);
 
 // LISTENER
 app.listen(8080, () => {

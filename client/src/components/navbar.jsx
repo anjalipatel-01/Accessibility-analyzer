@@ -1,16 +1,48 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios"; 
+import { Menu } from 'lucide-react';
 
 export default function Navbar() {
+  const [isloggedIn, setisloggedIn] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        await axios.get("http://localhost:8080/api/protected", {
+          withCredentials: true,
+        });
+        setisloggedIn(true); 
+      } catch (error) {
+        setisloggedIn(false); 
+      }
+    };
+    checkAuth();
+  }, [location.pathname]);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:8080/api/logout", {}, {
+        withCredentials: true,
+      });
+      setisloggedIn(false);
+      window.location.href = "/login";
+    } catch (error) {
+      console.log("Logout error:", error.message);
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="services">
-        <a href="#">Services</a>
-        <a href="#">Solutions</a>
-        <a href="#">Compliance</a>
-        <a href="#">Company</a>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/solution">Solutions</a>
+        <a href="/compliance">Compliance</a>
+        <a href="/company">Company</a>
       </div>
 
       <div className="search-auth-wrapper">
@@ -20,10 +52,20 @@ export default function Navbar() {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <div className="auth-buttons">
-          <Link to="/register"><button id="register">SignUp</button></Link>
-          <Link to="/login"><button id="login">Login</button></Link>
-        </div>
+
+        {isloggedIn ? (
+          <>
+          <Link to="/dashboard" className="btn btn-outline-secondary me-2" id="dashboard-btn">
+            Dashboard
+          </Link>
+          <button onClick={handleLogout} id="logout">Logout</button></>
+        
+        ) : (
+          <>
+            <Link to="/login" id="login">Login</Link>
+            <Link to="/register" id="signup">Signup</Link>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -5,51 +5,57 @@ import { useNavigate,Link } from "react-router-dom";
 import Footer from '../components/footer';
 
 export default function Login() {
+     const [input, setInput] = useState({
+        username:"",
+        password:""
+    });
+
     const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handlelogin = async (event) => {
-        event.preventDefault();
-        try {
-            const res = await axios.post("http://localhost:8080/login", {
-                username,
-                password
-            });
-
-            // localStorage.setItem("token", res.data.token);
-            // localStorage.setItem("user", JSON.stringify(res.data.user));
-
-            alert("✅ Login Successful");
-            navigate("/dashboard");
-        } catch (error) {
-            console.error("Login error:", error);
-            alert("❌ Login Failed! Check your username or password.");
-        }
+    const changEventHandler = (e)=>{
+        setInput({...input,[e.target.name]:e.target.value});
     }
-
-    const handlechange= ()=>{
-        navigate("/login");
-    }
+    
+    const submitHandler = async (e)=>{
+        e.preventDefault();
+        try{
+            const res = await axios.post("http://localhost:8080/api/login",{
+  username: input.username,
+  password: input.password
+},{
+        withCredentials: true
+      });
+            if(res.data.success){
+               alert("✅ Login Successful");
+                navigate("/dashboard");
+            }else{
+              alert("❌ Login failed. Please try again.");
+            }
+        }catch(error){
+            console.log(error);
+            alert("❌ Login failed! Check your username or password.");
+        }    
+    };
     return (
   <div className="page-wrapper">
     <div className='auth-page'>
-      <form onSubmit={handlelogin}>
+      <form onSubmit={submitHandler}>
         <input
           type="text"
           id="username"
-          value={username}
+          name='username'
+          value={input.username}
           placeholder="Enter your username"
           required
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={changEventHandler}
           className="username-input"
         />
         <input
           type="password"
-          value={password}
+          name='password'
+          value={input.password}
           placeholder="Enter your password"
           required
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={changEventHandler}
           className="password-input"
         />
         <button type='submit' className="submit-button">
