@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authroutes.js";
+import analyze from "./routes/analyze.js";
 
 const app = express();
 const MONGO_URL = "mongodb://127.0.0.1:27017/test";
@@ -37,8 +38,8 @@ app.use(cors({
 app.get("/", (req, res) => {
     res.send("Hi I am root");
 });
-
 app.use("/api", authRoutes);
+app.use("/api",analyze);
 
 // LISTENER
 app.listen(8080, () => {
