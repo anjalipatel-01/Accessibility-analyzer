@@ -3,13 +3,15 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
-  const { username, email, password } = req.body;
-
-  console.log("🚨 Raw password passed to register:", password);
+  let { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ error: "Please fill all fields" });
   }
+
+  // Trim inputs
+  username = username.trim();
+  email = email.trim();
 
   try {
     const existingUser = await User.findOne({ username });
@@ -19,7 +21,7 @@ export const register = async (req, res) => {
 
     const newUser = new User({ username, email, password });
 
-    await newUser.save(); 
+    await newUser.save();
 
     const token = jwt.sign(
       { id: newUser._id, username: newUser.username },
@@ -27,8 +29,15 @@ export const register = async (req, res) => {
       { expiresIn: "1d" }
     );
 
+    // Auto-login: Set cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "Lax",
+      secure: false, // change to true in production with HTTPS
+    });
+
     res.status(201).json({
-      message: "User registered successfully",
+      message: "User registered and logged in successfully",
       token,
       user: { id: newUser._id, username: newUser.username, email },
     });
@@ -40,17 +49,23 @@ export const register = async (req, res) => {
 
 
 export const login = async (req, res) => {
-  const { username, password } = req.body;
+  let { email, password } = req.body;
 
-  if (!username || !password)
+  if (!email || !password)
     return res.status(400).json({ error: "Missing fields" });
 
+  // Trim email
+  email = email.trim();
+
   try {
-    const user = await User.findOne({ username });
-    if (!user) return res.status(401).json({ error: "Invalid credentials" });
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("Match result:", isMatch);
+
     if (!isMatch) return res.status(401).json({ error: "Invalid credentials" });
 
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' });
@@ -70,15 +85,15 @@ export const login = async (req, res) => {
 
 
 export const logout = async (req, res) => {
-    try {
-        return res
-            .status(200)
-            .cookie("token", "", { maxAge: 0, httpOnly: true, sameSite: 'lax',secure:false })
-            .json({
-                message: "Logged out successfully!",
-                success: true
-            });
-    } catch (error) {
-        res.status(500).json({ error: "Server error during logout" });
-    }
+  try {
+    return res
+      .status(200)
+      .cookie("token", "", { maxAge: 0, httpOnly: true, sameSite: 'lax', secure: false })
+      .json({
+        message: "Logged out successfully!",
+        success: true
+      });
+  } catch (error) {
+    res.status(500).json({ error: "Server error during logout" });
+  }
 };

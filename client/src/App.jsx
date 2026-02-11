@@ -10,6 +10,7 @@ import Services from "./pages/Services.jsx";
 import Solution from "./pages/Solution.jsx";
 import Compliance from "./pages/Compliance.jsx";
 import Company from "./pages/Company.jsx";
+import Report from "./pages/Report.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -46,6 +47,9 @@ const appRouter = createBrowserRouter([
   },{
     path:'/company',
     element: <Company/>
+  },{
+    path:'/report',
+    element: <Report/>
   }
   ])
 export default function App() {

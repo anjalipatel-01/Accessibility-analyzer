@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const issueSchema = new Schema({
   type: { type: String, required: true },        
-  severity: { type: String, enum: ["low", "moderate", "critical"], required: true },
+  severity: { type: String, enum: ["Low", "Moderate", "Critical"], required: true },
   element: String,                                
   message: String,                                
   suggestion: String,                             

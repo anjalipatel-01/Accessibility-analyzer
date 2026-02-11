@@ -1,25 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios"; 
-import { Menu } from 'lucide-react';
+import { useEffect } from "react";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
-  const [isloggedIn, setisloggedIn] = useState(false);
+  const { isLoggedIn, logout, checkAuth } = useAuth();
   const location = useLocation();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        await axios.get("http://localhost:8080/api/protected", {
-          withCredentials: true,
-        });
-        setisloggedIn(true); 
-      } catch (error) {
-        setisloggedIn(false); 
-      }
-    };
     checkAuth();
   }, [location.pathname]);
 
@@ -28,7 +18,7 @@ export default function Navbar() {
       await axios.post("http://localhost:8080/api/logout", {}, {
         withCredentials: true,
       });
-      setisloggedIn(false);
+      logout();
       window.location.href = "/login";
     } catch (error) {
       console.log("Logout error:", error.message);
@@ -53,13 +43,13 @@ export default function Navbar() {
           </button>
         </div>
 
-        {isloggedIn ? (
+        {isLoggedIn ? (
           <>
-          <Link to="/dashboard" className="btn btn-outline-secondary me-2" id="dashboard-btn">
-            Dashboard
-          </Link>
-          <button onClick={handleLogout} id="logout">Logout</button></>
-        
+            <Link to="/dashboard" className="btn btn-outline-secondary me-2" id="dashboard-btn">
+              Dashboard
+            </Link>
+            <button onClick={handleLogout} id="logout">Logout</button></>
+
         ) : (
           <>
             <Link to="/login" id="login">Login</Link>
