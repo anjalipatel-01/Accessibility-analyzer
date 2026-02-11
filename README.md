@@ -31,16 +31,3 @@ A tool that analyzes HTML content or web pages to identify accessibility issues 
 
 ---
 
-## 🧑‍💻 Developer Logs
-
-| Week | Progress |
-|------|----------|
-| Week 1 | Set up full MERN stack and created initial project folders (`client`, `server`) |
-| Week 2 | Built basic Express backend and connected MongoDB |
-| Week 3 | Added accessibility scan logic using Cheerio |
-| Week 4 | Saving reports in MongoDB and displaying results on frontend |
-| Ongoing | Report export, score logic, and UI enhancements |
-
----
-
-## 🚀 Getting Started
