@@ -32,8 +32,9 @@ export const register = async (req, res) => {
     // Auto-login: Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "Lax",
-      secure: false, // change to true in production with HTTPS
+      sameSite: "Lax", // Required for cross-site (even localhost ports) if secure is false
+      secure: false,   // Set to true in production
+      maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
 
     res.status(201).json({
@@ -88,7 +89,12 @@ export const logout = async (req, res) => {
   try {
     return res
       .status(200)
-      .cookie("token", "", { maxAge: 0, httpOnly: true, sameSite: 'lax', secure: false })
+      .cookie("token", "", {
+        httpOnly: true,
+        sameSite: 'Lax',
+        secure: false,
+        expires: new Date(0)
+      })
       .json({
         message: "Logged out successfully!",
         success: true

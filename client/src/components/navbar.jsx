@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { LogOut, LayoutDashboard, UserPlus, LogIn, Menu, X, Shield } from "lucide-react";
 
 export default function Navbar() {
   const { isLoggedIn, logout, checkAuth } = useAuth();
   const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -25,37 +25,71 @@ export default function Navbar() {
     }
   };
 
+  const isActive = (path) => location.pathname === path;
+
+  const navLinkData = [
+    { to: "/", label: "Home" },
+    { to: "/services", label: "Services" },
+    { to: "/solution", label: "Solutions" },
+    { to: "/compliance", label: "Compliance" },
+    { to: "/company", label: "Company" },
+    { to: "/contact", label: "Contact" },
+  ];
+
   return (
     <nav className="navbar">
-      <div className="services">
-        <a href="/">Home</a>
-        <a href="/services">Services</a>
-        <a href="/solution">Solutions</a>
-        <a href="/compliance">Compliance</a>
-        <a href="/company">Company</a>
-      </div>
+      <div className="container">
+        <Link to="/" className="nav-brand">
+          <span className="nav-brand-icon"><Shield size={16} /></span>
+          AccessGuard
+        </Link>
 
-      <div className="search-auth-wrapper">
-        <div className="search-container">
-          <input type="text" placeholder="Search" aria-label="Search" />
-          <button className="search-button">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
+        <div className="nav-links">
+          {navLinkData.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className={`nav-link${isActive(to) ? " active" : ""}`}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
-        {isLoggedIn ? (
-          <>
-            <Link to="/dashboard" className="btn btn-outline-secondary me-2" id="dashboard-btn">
-              Dashboard
-            </Link>
-            <button onClick={handleLogout} id="logout">Logout</button></>
+        <div className="nav-right">
 
-        ) : (
-          <>
-            <Link to="/login" id="login">Login</Link>
-            <Link to="/register" id="signup">Signup</Link>
-          </>
-        )}
+
+          <div className="nav-auth">
+            {isLoggedIn ? (
+              <>
+
+                <button onClick={handleLogout} className="btn btn-ghost btn-sm">
+                  <LogOut size={16} />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-ghost btn-sm">
+                  <LogIn size={16} />
+                  Login
+                </Link>
+                <Link to="/register" className="btn btn-primary btn-sm">
+                  <UserPlus size={16} />
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
+
+          <button
+            className="nav-toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
     </nav>
   );
