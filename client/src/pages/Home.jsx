@@ -24,7 +24,7 @@ export default function Home() {
                             <div className="stat-label">Homepages Fail</div>
                         </div>
                         <div className="stat-item animate-fade-in animate-fade-in-delay-2">
-                            <div className="stat-value">50+</div>
+                            <div className="stat-value">20+</div>
                             <div className="stat-label">WCAG Checks</div>
                         </div>
                         <div className="stat-item animate-fade-in animate-fade-in-delay-3">
