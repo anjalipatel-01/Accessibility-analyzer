@@ -11,6 +11,7 @@ import Compliance from "./pages/Compliance.jsx";
 import Company from "./pages/Company.jsx";
 import Report from "./pages/Report.jsx";
 import Contact from "./pages/Contact.jsx";
+import ChatWidget from "./components/ChatWidget.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -59,6 +60,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={appRouter} />
+      <ChatWidget />
     </>
   );
 }

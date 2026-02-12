@@ -13,6 +13,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authroutes.js";
 import analyze from "./routes/analyze.js";
+import chatRoutes from "./routes/chat.js";
 
 const app = express();
 const MONGO_URL = "mongodb://127.0.0.1:27017/test";
@@ -36,7 +37,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:5174", "http://127.0.0.1:5174"],
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:5174", "http://127.0.0.1:5174", "http://localhost:5175", "http://127.0.0.1:5175", "http://localhost:5176", "http://127.0.0.1:5176"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api", authRoutes);
 app.use("/api", analyze);
+app.use("/api/chat", chatRoutes);
 
 // LISTENER
 app.listen(8080, () => {

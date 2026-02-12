@@ -33,6 +33,10 @@
   --accent-light: var(--amber-light);
   --accent-2: var(--orange);
   --accent-2-light: var(--orange-light);
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--teal), var(--sky));
+  --gradient-dark: linear-gradient(135deg, var(--navy), var(--navy-light));
+  --gradient-accent: linear-gradient(135deg, var(--amber), var(--orange));
 
   /* Neutrals */
   --bg-body: #f0f7fa;
